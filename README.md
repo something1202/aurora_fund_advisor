@@ -2,7 +2,7 @@
 
 ---
 
-## 1. Introduction
+  ## 1. System Design
 
 We present FundAdvisor, an AI system designed to guide customers toward suitable fund selections through interactive conversation. The system addresses the three core challenges posed in the task brief: iterative data collection under uncertainty, principled stopping criteria, and tractable recommendation with auditable decision-making.
 
@@ -12,7 +12,11 @@ A live demo is available at:
 
 The demo shows the system's output for the query *"I have 10000 gbp to invest for 1 year"*, demonstrating how FundAdvisor's questionnaire-driven approach outperforms a naive embedding retrieval baseline.
 
-I built an end-to-end pipeline using the design decisions described below. The four key contributions are:
+The system design is:
+
+![System Design](./SystemDesign.svg)
+
+The four key contributions are:
 
 1. **LLM-driven questionnaire generation**: the foundation of the entire system. By eliciting structured investor preferences through adaptive, conversational questions, the system acquires the precise information needed for the deterministic scorer to select funds that match the user's needs. Without this questionnaire, the system would be reduced to keyword matching or generic retrieval which is very likely unable to distinguish a capital-preservation investor from a growth-seeking one.
 2. **RAG-powered news article retrieval**: relevant market news articles are retrieved per recommended fund and presented alongside the Investment Policy Statement, giving the investor current market context to refer to when reviewing their personalised recommendations.
@@ -162,20 +166,14 @@ The live demo (https://cuneatic-unflurried-lily.ngrok-free.dev/c/bebc913e-3568-4
 
 ---
 
-## 7. System Design
-
-![System Design](./SystemDesign.svg)
-
----
-
-## 8. Regulatory Considerations
+## 7. Regulatory Considerations
 
 - **Auditability**: fund selection is fully deterministic. Given the same profile and catalog, the scorer always produces the same top-5. The LLM only narrates (allocation + IPS), never chooses.
 - **Traceability**: the DimensionState is a structured JSON record extracted from the user's own words. The conversation itself is the audit trail.
 
 ---
 
-## 9. References
+## 8. References
 
 [1] Ryan, M. J., Zhang, Y., Salunkhe, A., Chu, Y., Xu, D., & Yang, D. (2025). *AutoMetrics: Approximate Human Judgments with Automatically Generated Evaluators* [Software, v1.0.0]. GitHub. https://github.com/XenonMolecule/autometrics. To appear in *Proceedings of the International Conference on Learning Representations (ICLR 2026)*. https://openreview.net/forum?id=ymJuBifPUy
 
