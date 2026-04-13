@@ -1,5 +1,4 @@
-# FundAdvisor: Architecture for Interactive Investment Guidance
-
+# Aurora Fund Advisor
 ---
 
   ## 1. System Design
