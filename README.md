@@ -164,7 +164,7 @@ The live demo (https://cuneatic-unflurried-lily.ngrok-free.dev/c/bebc913e-3568-4
 
 ## 7. System Design
 
-![System Design](./SysDesign.svg)
+![System Design](./SystemDesign.svg)
 
 ---
 
